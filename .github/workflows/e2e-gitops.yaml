@@ -84,15 +84,15 @@ jobs:
       run: |
         git config --global user.email "${{ secrets.GIT_EMAIL }}"
         git config --global user.name "${{ secrets.GIT_USERNAME }}"
-        
-        # Set new remote with PAT
+
+        # ✅ Set remote using PAT for authenticated push
         git remote set-url origin https://x-access-token:${{ secrets.GH_PAT_PUSH }}@github.com/Diler-M/end-to-end-devsecops-repo-for-video-game-project-main.git
-        
+
         git pull origin main
         sed -i "s|image: dilerm13/video-game-devsecops-project:.*$|image: dilerm13/video-game-devsecops-project:${{ env.VERSION }}|" deployment.yaml
         echo ${{ env.VERSION }} > version.txt
         CURRENT_VERSION=$(cat version.txt)
-        
+
         git add deployment.yaml version.txt
         git commit -m "Updated deployment.yaml and version.txt with image tag ${CURRENT_VERSION}"
         git push origin main
