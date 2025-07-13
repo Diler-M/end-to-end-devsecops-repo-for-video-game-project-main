@@ -63,6 +63,7 @@ jobs:
         run: |
           docker pull docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
           docker save -o supermariolatestdockerimage.tar docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
+          mv supermariolatestdockerimage.tar $GITHUB_WORKSPACE/
      
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
