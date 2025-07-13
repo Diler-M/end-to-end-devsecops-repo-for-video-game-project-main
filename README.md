@@ -8,8 +8,6 @@ A **real-world DevSecOps pipeline** for a lightweight HTML5 Super Mario clone, d
 - **GitOps-based deployment automation**
 - **Secrets management and version control**
 
-Designed to **showcase your DevSecOps skills** clearly in your CV and interviews.
-
 ---
 
 ## 🛠️ Features
@@ -63,36 +61,7 @@ Designed to **showcase your DevSecOps skills** clearly in your CV and interviews
 - Add **unit testing & linting** to pipeline
 - Enforce **SonarQube Quality Gates**
 - Enforce **Trivy failure on CRITICAL/HIGH CVEs**
-- Add **ArgoCD/Flux GitOps cluster deployment**
 - Slack/MS Teams **notifications on pipeline status**
-
----
-
-## 📈 Badges
-
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/yourusername/yourrepo/e2e-gitops.yaml?branch=main&label=CI%2FCD%20Pipeline)
-![Docker Hub](https://img.shields.io/docker/pulls/dilerm13/video-game-devsecops-project)
-![Security](https://img.shields.io/badge/Security-Integrated-green)
-
----
-
-## 📞 Talking Points for Interviews
-
-- Integrating **SAST & container scanning** into CI/CD
-- **Automated versioning & tagging strategies**
-- **GitOps deployment pipelines**
-- **Secrets management in pipelines**
-- Using **SonarQube, Trivy, Docker, Kubernetes** securely in real workflows
-
----
-
-## 🌟 Highlight for Employers
-This project **proves your DevSecOps capabilities** in:
-
-- Secure CI/CD design
-- Pipeline management
-- Security-as-Code and GitOps practices
-- Real-world pipeline troubleshooting and enhancement
 
 ---
 
