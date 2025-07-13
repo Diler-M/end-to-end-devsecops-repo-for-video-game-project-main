@@ -45,8 +45,8 @@ jobs:
  
       - name: Build and Push Docker Image
         run: |
-          docker build -t docker.io/raghuthesecurityexpert/supermariogitopsproject:${{ env.VERSION }} .
-          docker push docker.io/raghuthesecurityexpert/supermariogitopsproject:${{ env.VERSION }}
+          docker build -t docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }} .
+          docker push docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
  
   run_container_image_scan_on_supermario_docker_image:
     runs-on: ubuntu-latest
@@ -61,8 +61,8 @@ jobs:
         
       - name: Get Docker Image from Docker Hub
         run: |
-          docker pull docker.io/raghuthesecurityexpert/supermariogitopsproject:${{ env.VERSION }}
-          docker save -o supermariolatestdockerimage.tar docker.io/raghuthesecurityexpert/supermariogitopsproject:${{ env.VERSION }}
+          docker pull docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
+          docker save -o supermariolatestdockerimage.tar docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
      
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
@@ -87,7 +87,7 @@ jobs:
       - name: Update Deployment YAML
         run: |
           git pull
-          sed -i "s|image: raghuthesecurityexpert/supermariogitopsproject:.*$|image: raghuthesecurityexpert/supermariogitopsproject:${{ env.VERSION }}|" deployment.yaml
+          sed -i "s|image: dilerm13/video-game-devsecops-project:.*$|image: dilerm13/video-game-devsecops-project:${{ env.VERSION }}|" deployment.yaml
           echo ${{ env.VERSION }} > version.txt
           CURRENT_VERSION=$(cat version.txt)
           git add deployment.yaml version.txt
