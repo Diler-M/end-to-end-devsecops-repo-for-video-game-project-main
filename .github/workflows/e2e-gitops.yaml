@@ -47,30 +47,30 @@ jobs:
         run: |
           docker build -t docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }} .
           docker push docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
- 
+
   run_container_image_scan_on_supermario_docker_image:
     runs-on: ubuntu-latest
     needs: build_push_supermario_docker_image
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Login to Docker Hub
-      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-    - name: Get Docker Image from Docker Hub
-      run: |
-        docker pull docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
-        docker save -o /github/workspace/supermariolatestdockerimage.tar docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
-        ls -l /github/workspace/supermariolatestdockerimage.tar  # Optional check
+      - name: Get Docker Image from Docker Hub
+        run: |
+          docker pull docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
+          docker save -o supermariolatestdockerimage.tar docker.io/dilerm13/video-game-devsecops-project:${{ env.VERSION }}
+          ls -l supermariolatestdockerimage.tar  # Confirm it was saved correctly
 
-    - name: Run Trivy vulnerability scanner in tarball mode
-      uses: aquasecurity/trivy-action@master
-      with:
-        input: /github/workspace/supermariolatestdockerimage.tar
-        exit-code: '0'
-        severity: 'CRITICAL,HIGH'  
+      - name: Run Trivy vulnerability scanner in tarball mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          input: supermariolatestdockerimage.tar
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'        
           
   update_k8s_yaml_version_file_with_latest_image_tag:
     runs-on: ubuntu-latest
