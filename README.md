@@ -1,45 +1,53 @@
-# 📦 End-to-End DevSecOps Pipeline for Video Game Project
+# 📦 End-to-End DevSecOps Pipeline for Video Game Project using GitOps
 
 ## 🎮 Overview
-A **real-world DevSecOps pipeline** for a lightweight HTML5 Super Mario clone, demonstrating:
 
-- **Secure CI/CD pipeline design**
-- **Containerisation & scanning**
-- **GitOps-based deployment automation**
-- **Secrets management and version control**
+This project is an **End-to-End DevSecOps Case Study** demonstrating **GitOps practices** for a lightweight HTML5 Mario game clone. It showcases:
+
+- **Secure CI/CD pipeline design using GitHub Actions**
+- **Static code analysis with SonarQube (SAST)**
+- **Containerisation and vulnerability scanning (Trivy)**
+- **Docker image build, tagging, and publishing**
+- **Automated Kubernetes deployment using GitOps principles (ArgoCD)**
 
 ---
 
 ## 🛠️ Features
 
-✅ **GitHub Actions multi-stage pipeline**:
-- **SAST with SonarQube**
-- **Build & push Docker images**
-- **Container vulnerability scanning (Trivy)**
-- **Automated Kubernetes manifest updates (GitOps)**
+✅ **GitHub Actions multi-stage pipeline**
+✅ **SonarQube SAST integration**
+✅ **Container build, push, and scanning (Docker + Trivy)**
+✅ **GitOps deployment workflow using ArgoCD**
+✅ **Version tracking and automated tag management**
+✅ **Azure Kubernetes Service (AKS) deployment readiness**
 
-✅ **Containerisation:** Alpine-based Tomcat for lightweight deployment.  
-✅ **Secrets Management:** Uses GitHub Actions secrets.  
-✅ **Version Automation:** Auto-increments tags in CI/CD pipeline.
 
 ---
 
 ## 🚀 Pipeline Workflow
 
-1️⃣ Push to `main` triggers pipeline  
-2️⃣ **SonarQube SAST scan** for vulnerabilities and code quality  
-3️⃣ **Build & push Docker image** with incremented tag  
-4️⃣ **Trivy scan** for critical/high vulnerabilities  
-5️⃣ Auto-update `deployment.yaml` and `version.txt` with the new tag
+1️⃣ **Code Commit:**  
+   - Developer commits changes (e.g., Mario game controls) to GitHub.
+   - Triggers end to end GitHub Actions pipeline automatically.
 
----
+2️⃣ **Static Code Analysis:**  
+   - **SonarQube** runs SAST for vulnerability scanning.
 
-## 🛡️ Why This Project is Valuable
+3️⃣ **Build & Tag Docker Image:**  
+   - Docker image for the Mario game is built with a **dynamic tag** based on `version.txt`.
 
-✅ Demonstrates **security-first pipeline design**  
-✅ Shows **secure CI/CD integration with SAST & container scanning**  
-✅ Highlights **GitOps principles for reliable deployment**  
-✅ Uses **Trivy, SonarQube, Docker, and Kubernetes securely**
+4️⃣ **Push to Docker Hub:**  
+   - The built image is pushed to **Docker Hub** for versioned storage.
+
+5️⃣ **Update Deployment YAML:**  
+   - The pipeline updates `deployment.yaml` with the new tag.
+   - Commits updated `deployment.yaml` and `version.txt` to the repo.
+
+6️⃣ **GitOps Deployment with ArgoCD:**  
+   - **ArgoCD detects changes** in `deployment.yaml` automatically.
+   - Deploys the new image to **Azure Kubernetes Service (AKS)**.
+   - AKS exposes the Mario game via a Load Balancer on the internet.
+
 
 ---
 
@@ -53,15 +61,16 @@ A **real-world DevSecOps pipeline** for a lightweight HTML5 Super Mario clone, d
 - 📄 version.txt 
 - 📄 README.md 
 
-
 ---
 
-## 💡 Future Enhancements
+## 🌟 Why This Project is Valuable
 
-- Add **unit testing & linting** to pipeline
-- Enforce **SonarQube Quality Gates**
-- Enforce **Trivy failure on CRITICAL/HIGH CVEs**
-- Slack/MS Teams **notifications on pipeline status**
+✅ Demonstrates **real-world DevSecOps practices**  
+✅ Shows **security-first pipeline design** with SAST and container scanning  
+✅ Applies **GitOps for Kubernetes deployment**  
+✅ Uses **Azure Kubernetes Service (AKS) for cloud deployment readiness**  
+✅ Automates **version control and tag management**  
+✅ Uses **SonarQube, Trivy, Docker, Kubernetes, GitHub Actions, and ArgoCD** in a cohesive workflow
 
 ---
 
